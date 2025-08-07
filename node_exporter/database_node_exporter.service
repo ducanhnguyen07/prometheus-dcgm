@@ -1,0 +1,13 @@
+anhnd@database-server:~$ cat /etc/systemd/system/node_exporter.service
+[Unit]
+Description=Node Exporter
+After=network.target
+
+[Service]
+User=nobody
+Group=nogroup
+Type=simple
+ExecStart=/usr/local/bin/node_exporter --collector.systemd
+
+[Install]
+WantedBy=multi-user.target
