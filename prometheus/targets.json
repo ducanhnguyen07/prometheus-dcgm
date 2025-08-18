@@ -1,0 +1,18 @@
+[
+  {
+    "labels": {
+      "job": "gitlab-server"
+    },
+    "targets": [
+      "192.168.42.130:9101"
+    ]
+  },
+  {
+    "labels": {
+      "job": "database-server"
+    },
+    "targets": [
+      "192.168.42.115:9100"
+    ]
+  }
+]

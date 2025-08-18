@@ -9,6 +9,7 @@ services:
     volumes:
       - /opt/prometheus_config/prometheus.yml:/opt/bitnami/prometheus/conf/prometheus.yml
       - /opt/prometheus_config/rules.yml:/opt/bitnami/prometheus/conf/rules.yml
+      - /opt/prometheus_config/targets.json:/opt/bitnami/prometheus/conf/targets.json
     restart: unless-stopped
 
   grafana:

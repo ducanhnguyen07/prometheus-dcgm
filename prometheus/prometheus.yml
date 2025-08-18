@@ -16,10 +16,7 @@ scrape_configs:
     static_configs:
       - targets: ["localhost:9090"]
 
-  - job_name: "gitlab-server"
-    static_configs:
-      - targets: ["192.168.42.130:9101"]
-
-  - job_name: "database-server"
-    static_configs:
-      - targets: ["192.168.42.115:9100"]
+  - job_name: "git-db-server"
+    file_sd_configs:
+      - files:
+        - '/opt/bitnami/prometheus/conf/targets.json'
