@@ -1,0 +1,26 @@
+global:
+  resolve_timeout: 5m
+  smtp_from: 'ducanhnguyend21cntt@gmail.com'
+
+route:
+  group_by: ['job']
+  group_wait: 7s
+  group_interval: 1m
+  repeat_interval: 1m
+  receiver: 'email-notifications'
+
+inhibit_rules:
+  - source_match:
+      severity: 'critical'
+    target_match:
+      severity: 'warning'
+    equal: ['alertname', 'instance', 'job']
+
+receivers:
+- name: 'email-notifications'
+  email_configs:
+  - to: 'viemchinhlacacuocdoi@gmail.com'
+    send_resolved: true
+    smarthost: 'smtp.gmail.com:587'
+    auth_username: 'ducanhnguyend21cntt@gmail.com'
+    auth_password: ''

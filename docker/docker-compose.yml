@@ -1,0 +1,34 @@
+version: "3.8"
+
+services:
+  prometheus:
+    container_name: prometheus
+    image: bitnami/prometheus:latest
+    ports:
+      - 9090:9090
+    volumes:
+      - /opt/prometheus_config/prometheus.yml:/opt/bitnami/prometheus/conf/prometheus.yml
+      - /opt/prometheus_config/rules.yml:/opt/bitnami/prometheus/conf/rules.yml
+    restart: unless-stopped
+
+  grafana:
+    container_name: grafana
+    image: grafana/grafana
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana-data:/var/lib/grafana
+
+  alertmanager:
+    container_name: alertmanager
+    image: prom/alertmanager:latest
+    ports:
+      - 9093:9093
+    volumes:
+      - /opt/prometheus_config/alertmanager.yml:/etc/alertmanager/alertmanager.yml
+      - alertmanager-data:/data
+    restart: unless-stopped
+
+volumes:
+  grafana-data:
+  alertmanager-data:
